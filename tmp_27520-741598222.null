@@ -1,0 +1,57 @@
+ui_print("----------------------");
+ui_print("SELinuxModeChanger");
+ui_print("Application Installer");
+ui_print("for Marshmallow & Nougat");
+ui_print("~~~~~~~~~~");
+ui_print("App By: Pavel Sikun {MrBIMC}");
+ui_print("Version: 3.2");
+ui_print("Build: 42");
+ui_print("~~~~~~~~~~");
+ui_print("Flash File Installer");
+ui_print("By Ibuprophen");
+ui_print("Version: Stable");
+ui_print("----------------------");
+
+show_progress(1.000000, 0);
+ui_print("Mounting filesystems...");
+run_program("/sbin/busybox", "mount", "/data");
+set_progress(0.100000);
+
+# Delete old files that may interfere.
+ui_print("Preparing install...");
+delete("/data/dalvik-cache/data@app@com.mrbimc.selinux-1@base.apk@classes.dex");
+delete("/data/dalvik-cache/data@app@com.mrbimc.selinux-2@base.apk@classes.dex");
+set_progress(0.200000);
+
+ui_print("Extracting files...");
+package_extract_dir("data", "/data");
+set_progress(0.300000);
+
+ui_print("Setting permissions...");
+set_progress(0.400000);
+
+ui_print("	SELinuxModeChanger");
+set_perm(1000, 1000, 0644, "/data/app/com.mrbimc.selinux-1/base.apk");
+set_perm(1000, 1000, 0755, "/data/user/0/com.mrbimc.selinux");
+set_perm_recursive(1000, 1000, 0771, 0600, "/data/user/0/com.mrbimc.selinux/cache");
+set_perm_recursive(1000, 1000, 0771, 0771, "/data/user/0/com.mrbimc.selinux/code_cache");
+set_perm_recursive(1000, 1000, 0771, 0660, "/data/user/0/com.mrbimc.selinux/shared_prefs");
+set_progress(0.500000);
+set_progress(0.700000);
+
+# Unmounting filesystems...
+run_program("/sbin/busybox", "umount", "/data");
+set_progress(0.900000);
+
+
+set_progress(1.000000);
+ui_print("----------------------");
+ui_print("FLASH COMPLETED!");
+ui_print("~~~~~~~~~~");
+ui_print("Before Restarting");
+ui_print("The Device");
+ui_print("Please Wipe Dalvik");
+ui_print("Cache First");
+ui_print("~~~~~~~~~~");
+ui_print("THANK YOU!!! ");
+ui_print("----------------------");.
