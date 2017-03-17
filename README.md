@@ -1,6 +1,6 @@
 # SELinuxToggler
 
-This is the SelinuxToggler (A Reboot off the depreciated "SELinuxModeChanger" from MrBIMC).
+The SelinuxToggler is a Reboot off the [depreciated] SELinuxModeChanger by MrBIMC (Located Here: https://github.com/mrbimc/SELinuxModeChanger).
 
 This is a simple android app that allows the user to manually change a device's default SELinux Mode from its Enforcement state to a Permissive state and back. This state can also be set to change upon each boot. 
 
